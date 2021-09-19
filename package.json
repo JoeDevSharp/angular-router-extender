@@ -1,0 +1,24 @@
+{
+  "name": "angular-router-extender",
+  "version": "1.0.0",
+  "description": "This module allows to provide new self-management functionalities to the angular router.",
+  "main": "indext.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clasicode/angular-router-extender.git"
+  },
+  "keywords": [
+    "angular",
+    "router",
+    "routerextender"
+  ],
+  "author": "José Miguel Ramos Seijo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clasicode/angular-router-extender/issues"
+  },
+  "homepage": "https://github.com/clasicode/angular-router-extender#readme"
+}
