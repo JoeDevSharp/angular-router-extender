@@ -1,0 +1,70 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ng-routerEntender-lib": {
+      "projectType": "library",
+      "root": "projects/ng-router-entender-lib",
+      "sourceRoot": "projects/ng-router-entender-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-router-entender-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-router-entender-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-router-entender-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-router-entender-lib/src/test.ts",
+            "tsConfig": "projects/ng-router-entender-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-router-entender-lib/karma.conf.js"
+          }
+        }
+      }
+    },
+    "angular-router-extender": {
+      "projectType": "library",
+      "root": "projects/angular-router-extender",
+      "sourceRoot": "projects/angular-router-extender/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular-router-extender/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-router-extender/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular-router-extender/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-router-extender/src/test.ts",
+            "tsConfig": "projects/angular-router-extender/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-router-extender/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-routerEntender-lib"
+}

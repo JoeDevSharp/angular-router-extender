@@ -2,24 +2,24 @@ import { Directive, ElementRef, HostListener, Input, OnChanges  } from '@angular
 import { Router, NavigationEnd, Event } from '@angular/router';
 
 import { RouterExtenderNavigate } from '../_interfaces/RouteExtender';
-import { RouteExtender,  } from '../_interfaces/RouteExtender';
+import { RouteExtender } from '../_interfaces/RouteExtender';
 
 @Directive({
   selector: '[to]'
 })
 export class RouterLinkDirective implements OnChanges {
 
-  @Input('to') routerNavigate : RouterExtenderNavigate 
+  @Input('to') routerNavigate : RouterExtenderNavigate
 
   private routerLink: Array<string> = []
 
   constructor(
     private router: Router,
     private el: ElementRef
-  ) { } 
+  ) { }
 
   ngOnChanges () {
-    // Condicion de salida de la funcion recursiva : 
+    // Condicion de salida de la funcion recursiva :
     this.routerLink = this.routerLinkContructor(
       this.getRouterConfingList()
     )
@@ -31,18 +31,18 @@ export class RouterLinkDirective implements OnChanges {
     });
     this.activeClassName()
   }
-  
+
   @HostListener('click') onClic() {
     this.activeClassName()
     this.router.navigate(this.routerLink)
   }
 
-  
+
   private activeClassName() {
 
     const routerLastPath = this.routerLink[this.routerLink.length - 1]
     const actualLastPath = window.location.href.split('/')[window.location.href.split('/').length - 1]
-    
+
     if (routerLastPath === actualLastPath ) {
       this.el.nativeElement.classList.add(this.routerNavigate.activeClass )
     }else{
@@ -85,5 +85,5 @@ export class RouterLinkDirective implements OnChanges {
 
     return routerLink
   }
-  
+
 }
