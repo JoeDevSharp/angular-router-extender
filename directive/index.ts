@@ -1,5 +1,5 @@
 import { routerLinkDirective } from "..";
 
-export default [
+export const RouterExtendDirectives = [
     routerLinkDirective
 ]
