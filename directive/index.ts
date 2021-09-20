@@ -1,5 +1,5 @@
-import { routerLinkDirective } from "..";
+import { RouterLinkDirective } from "./router-link.directive";
 
 export const RouterExtendDirectives = [
-    routerLinkDirective
+    RouterLinkDirective
 ]

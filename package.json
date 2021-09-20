@@ -1,6 +1,6 @@
 {
   "name": "angular-router-extender",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "This module allows to provide new self-management functionalities to the angular router.",
   "main": "indext.ts",
   "scripts": {
