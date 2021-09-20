@@ -63,13 +63,13 @@ export class RouterLinkDirective implements OnChanges {
 
   // Cette fonction permet de contruir la rute
   private routerLinkContructor (
-    routerConfig: RouteExtender[], 
+    routerConfig: RouteExtender[],
     routerLink: Array<string> = []
   ): Array<string> {
 
     // Iteration du routerConging
     for (const route of routerConfig) {
-      routerLink.push(route.path)
+      routerLink.push(route.path ? route.path : '')
       // Si le nom correspond on construit le route
       if (this.routerNameVerify(route.name)) {
         break

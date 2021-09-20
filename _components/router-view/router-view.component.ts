@@ -7,14 +7,13 @@ import {
   ViewChild,
   ViewContainerRef,
   ComponentRef,
+  EventEmitter,
 } from '@angular/core';
-import { 
-  Router, 
-  ActivatedRoute, 
-  Event, 
+import {
+  Router,
+  ActivatedRoute,
+  Event,
   NavigationEnd,
-  Routes,
-  Route,
  } from "@angular/router";
 
 
@@ -29,30 +28,29 @@ export class RouterViewComponent implements OnChanges {
    * entre la cle et la valeur qui corresponde a la valeur de l'attribute
    * du template.
    */
-  @Input() params?: any = null; 
-  
+  @Input() params?: any = null;
   /**
    * Le parametre Emit est un object de correspondance entre la cle qui correspond
    * a le nom d'EmitEvents et la valeur qui correspond a la function a executer.
    */
-  @Input() emits?: object = null;
+  @Input() emits: any = null;
 
   /**
    * Pointeur Template.
    */
   @ViewChild("viewContainerRef", { read: ViewContainerRef } as any)
-  
+
   /**
    * Représente un conteneur où une ou plusieurs vues peuvent être attachées à un composant.
    */
-  private viewContainserRef: ViewContainerRef
+  private viewContainserRef: ViewContainerRef | any
   private componentsReferences: Array<ComponentRef<any>> = []
   /**
-   * Le constructor qui ajouter un observable dans le router pour detecter 
+   * Le constructor qui ajouter un observable dans le router pour detecter
    * le changement.
-   * @param componentFactoryResolver 
-   * @param route 
-   * @param router 
+   * @param componentFactoryResolver
+   * @param route
+   * @param router
    */
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -79,10 +77,10 @@ export class RouterViewComponent implements OnChanges {
    * @returns Component importe dans le router.
    */
   _Composent(): Type<any> {
-    const parentPath = this.route.routeConfig.path.split('/')[this.route.routeConfig.path.split('/').length - 1]
+    const parentPath = this.route.routeConfig?.path?.split('/')[this.route.routeConfig.path.split('/').length - 1]
     const currentPath = this.router.url.split('/')[this.router.url.split('/').length - 1]
 
-    let currentComponent = (this.route.routeConfig.children as any).find(child => {
+    let currentComponent = (this.route.routeConfig?.children as any).find((child: any) => {
       let isPathBase = (parentPath == currentPath)
       return isPathBase
         ? child.path == ""
@@ -98,13 +96,13 @@ export class RouterViewComponent implements OnChanges {
     this.remove()
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this._Composent());
     let _composent = this.viewContainserRef.createComponent(componentFactory);
-    
+
     // add reference for newly created component
     this.componentsReferences.push(_composent);
     this._inputs(_composent.instance, componentFactory.inputs, this.params)
     this._outputs(_composent.instance)
   }
-  
+
   /**
    * Recupere le params de <router-view> pour realiser une correspondence entre le
    * diferent components et l'injecte dans le composent cree dinamiquement
@@ -112,22 +110,21 @@ export class RouterViewComponent implements OnChanges {
    * @param inputs Liste d'impint que le component contiens
    * @param params L'object de parametres reçu depuis le template
    */
-   _inputs (instance, inputs , params) {
+   _inputs (instance: any, inputs: any , params: any) {
     const propsNames: any = params ? Object.keys(params) :  null
     if (propsNames) {
-      inputs.forEach(input => {
-        instance[propsNames.find(i => i = input)] = params[input.templateName]
+      inputs.forEach((input: any) => {
+        instance[propsNames.find((i: any) => i = input)] = params[input.templateName]
       })
     }
   }
 
   // Recupere tout le output et ajouter a evenement Emiteur
-  _outputs (intance) {
+  _outputs (intance: any) {
     const emitsNames: any = this.emits ? Object.keys(this.emits) : []
-    emitsNames.forEach(emit => {
+    emitsNames.forEach((emit: string) => {
       if (intance[emit] !== undefined) {
-        (intance[emit]).subscribe(event => {
-          console.log(this.emits[emit], 'toto')
+        (intance[emit]).subscribe((event: any )=> {
           this.emits[emit](event)
         });
       }
