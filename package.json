@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/clasicode/angular-router-extender/issues"
   },
-  "homepage": "https://github.com/clasicode/angular-router-extender#readme"
+  "homepage": "https://github.com/clasicode/angular-router-extender#readme",
+  "dependencies": {
+    "@angular/core": "^12.2.6",
+    "@angular/router": "^12.2.6"
+  }
 }
