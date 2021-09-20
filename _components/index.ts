@@ -1,5 +1,5 @@
 import { RouterViewComponent } from "./router-view/router-view.component"
 
-export default [
+export const routerExtendComponents = [
     RouterViewComponent
 ]
