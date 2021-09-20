@@ -9,7 +9,7 @@ import { RouteExtender } from '../_interfaces/RouteExtender';
 })
 export class RouterLinkDirective implements OnChanges {
 
-  @Input('to') routerNavigate : RouterExtenderNavigate
+  @Input('to') routerNavigate! : RouterExtenderNavigate
 
   private routerLink: Array<string> = []
 
