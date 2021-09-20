@@ -1,6 +1,6 @@
 {
     "name": "my-workspace",
-    "version": "0.0.0",
+    "version": "2.0.0",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -34,7 +34,7 @@
         "zone.js": "~0.11.4"
     },
     "devDependencies": {
-      "@angular-devkit/build-angular": "~12.2.6",
+        "@angular-devkit/build-angular": "~12.2.6",
         "@angular/cli": "~12.2.6",
         "@angular/compiler-cli": "~12.2.0",
         "@types/jasmine": "~3.8.0",
